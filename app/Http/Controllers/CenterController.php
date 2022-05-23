@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Center;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class CenterController extends Controller
@@ -14,8 +15,12 @@ class CenterController extends Controller
      */
     public function index()
     {
-        //
-    }
+    $centers = Center:: paginate(25);
+    $students = Student:: paginate(50);
+     return view('welcome',compact('centers','students'));
+
+    } 
+    
 
     /**
      * Show the form for creating a new resource.
